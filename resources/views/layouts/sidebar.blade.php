@@ -28,9 +28,25 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('alternatif') }}" class="nav-link">
-                        <i class="nav-icon fas fa-cube"></i>
+                        <i class="nav-icon fas fa-puzzle-piece"></i>
                         <p>
                             Alternatif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('perhitungan') }}" class="nav-link">
+                        <i class="nav-icon fas fa-calculator"></i>
+                        <p>
+                            Data Perhitungan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('perangkingan') }}" class="nav-link">
+                        <i class="nav-icon fas fa-medal"></i>
+                        <p>
+                            Hasil Perangkingan
                         </p>
                     </a>
                 </li>
