@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('kriteriabobot') }}" class="nav-link">
+                    <a href="{{ url('kriteria') }}" class="nav-link">
                         <i class="nav-icon fas fa-cube"></i>
                         <p>
                             Kriteria & Bobot
