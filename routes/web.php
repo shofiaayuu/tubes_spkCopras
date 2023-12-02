@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KriteriaController;
@@ -23,7 +24,11 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
     Route::resource('/kriteria', KriteriaController::class)->parameter('kriteria', 'id');
+
+    Route::resource('/alternatif', AlternatifController::class)->parameter('alternatif', 'id');
+    
 });
 
 // //menampilkan halaman login sebagai halaman utama
