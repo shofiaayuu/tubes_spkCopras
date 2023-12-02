@@ -13,6 +13,14 @@
           <form method="POST" action="{{ $url_form }}">
             @csrf
             {!!(isset($alt))? method_field('PUT') : '' !!}
+            
+            <div class="form-group">
+              <label>Kode Alternatif</label>
+              <input class="form-control @error('kode') is-invalid @enderror" value="{{ isset($alt)? $alt->kode :old('kode') }}" name="kode" type="text" readonly/>
+              @error('kode')
+                <span class="error invalid-feedback">{{ $message }} </span>
+              @enderror
+            </div>
 
             <div class="form-group">
               <label>Nama</label>

@@ -13,7 +13,7 @@ use Yajra\DataTables\Facades\DataTables;
 class AlternatifController extends Controller
 {
     public function index(){
-        $data = Alternatif::orderBy('id')->get();
+        $data = Alternatif::orderBy('kode')->get();
         return view('alternatif.alternatif')->with('alt', $data);
     }
 
@@ -23,6 +23,7 @@ class AlternatifController extends Controller
 
     public function store(Request $request){
         $request->validate([
+            'kode'=>'required|string|unique:alternatif,kode',
             'nama'=>'required|string',
         ]);
             $data = $request->except(['_token']);

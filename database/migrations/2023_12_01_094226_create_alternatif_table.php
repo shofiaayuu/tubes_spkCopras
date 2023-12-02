@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('alternatif', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 50);
+            $table->string('kode', 5)->unique();
+            $table->string('nama', 2);
             $table->timestamps();
         });
     }

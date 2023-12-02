@@ -16,8 +16,9 @@
             <table class="table table-bordered table-striped text-center mx-auto">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>ALTERNATIF</th>
+                        <th>NO</th>
+                        <th>KODE ALTERNATIF</th>
+                        <th>NAMA</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
@@ -25,6 +26,7 @@
                     @foreach($alt as $no => $a)
                     <tr>
                         <td>{{$no+=1}}</td>
+                        <td>{{$a->kode}}</td>
                         <td>{{$a->nama}}</td>
                         <td class="d-flex justify-content-center">
                             <a href="{{url('/alternatif/'.$a->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
