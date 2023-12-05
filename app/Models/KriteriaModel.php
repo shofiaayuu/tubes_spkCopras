@@ -14,4 +14,6 @@ class KriteriaModel extends Model
     protected $fillable = [
         'kode', 'nama', 'jenis', 'bobot'
     ];
+
+    
 }

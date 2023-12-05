@@ -4,6 +4,7 @@ use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\SubKriteriaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/kriteria', KriteriaController::class)->parameter('kriteria', 'id');
 
     Route::resource('/alternatif', AlternatifController::class)->parameter('alternatif', 'id');
-    
+
+    Route::resource('sub_kriteria', SubKriteriaController::class);
+
+
 });
 
 // //menampilkan halaman login sebagai halaman utama
