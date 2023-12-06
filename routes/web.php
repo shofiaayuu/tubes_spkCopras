@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\AlternatifKriteriaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KriteriaController;
@@ -31,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/alternatif', AlternatifController::class)->parameter('alternatif', 'id');
 
     Route::resource('sub_kriteria', SubKriteriaController::class);
+
+    Route::resource('alternatif_kriteria', AlternatifKriteriaController::class);
 
 
 });

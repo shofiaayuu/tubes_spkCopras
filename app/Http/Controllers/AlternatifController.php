@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
+use App\Models\AlternatifKriteria;
+use App\Models\KriteriaModel;
+use App\Models\SubKriteria;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Http\Request;
@@ -14,7 +17,17 @@ class AlternatifController extends Controller
 {
     public function index(){
         $data = Alternatif::orderBy('kode')->get();
-        return view('alternatif.alternatif')->with('alt', $data);
+        $kriteria = KriteriaModel::all();
+        $alternatif_kriteria = AlternatifKriteria::all();
+        $alternatifKriteriaGrouped = $alternatif_kriteria->groupBy(['id_alternatif', 'id_kriteria']);
+        $subKriteria = SubKriteria::all();
+        return view('alternatif.alternatif')
+            ->with('alt', $data)
+            ->with('kriteria', $kriteria)
+            ->with('alternatif_kriteria', $alternatif_kriteria)
+            ->with('alternatifKriteriaGrouped', $alternatifKriteriaGrouped)
+            ->with('subKriteria', $subKriteria);
+
     }
 
     public function create(){

@@ -13,4 +13,8 @@ class Alternatif extends Model
         'kode',
         'nama'
     ];
-}
+
+    public function kriteria()
+    {
+        return $this->hasMany(AlternatifKriteria::class, 'id_alternatif');
+    }}
