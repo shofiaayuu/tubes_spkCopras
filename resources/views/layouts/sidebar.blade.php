@@ -35,6 +35,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('perhitungan') }}" class="nav-link">
+                        <i class="nav-icon fas fa-calculator"></i>
+                        <p>
+                            Perhitungan
+                        </p>
+                    </a>
+                </li>
+                {{--
+                <li class="nav-item">
                     <a href="{{ url('sub_kriteria') }}" class="nav-link">
                         <i class="nav-icon fas fa-puzzle-piece"></i>
                         <p>
@@ -42,14 +51,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('perhitungan') }}" class="nav-link">
-                        <i class="nav-icon fas fa-calculator"></i>
-                        <p>
-                            Data Perhitungan
-                        </p>
-                    </a>
-                </li>
+                --}}
                 <li class="nav-item">
                     <a href="{{ url('hasil_akhir') }}" class="nav-link">
                         <i class="nav-icon fas fa-medal"></i>
