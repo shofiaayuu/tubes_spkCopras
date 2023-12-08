@@ -155,7 +155,7 @@
                                 <td>{{ number_format($sumCostInverse[$a->id], 3) }}</td>
                                 <td>{{ number_format($v[$a->id], 3) }}</td>
                                 <td>{{ number_format($v2[$a->id], 3) }}</td>
-                                <td>{{ number_format($v3[$a->id], 3) }}</td>
+                                <td>{{ number_format($utilitas[$a->id], 3) }}</td>
                             </tr>
 
                         @endforeach
