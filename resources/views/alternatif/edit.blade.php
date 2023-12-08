@@ -5,36 +5,52 @@
 
     <!-- Default Box-->
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title"> Edit Data Alternatif </h3>
-            <br>
-        </div>
         <div class="card-body">
-          <form method="POST" action="{{ $url_form }}">
+          @if ($errors->any())
+            <div class="alert alert-danger">
+              <strong>Ups!</strong> Ada beberapa masalah dengan masukan Anda.<br><br>
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+            </div>
+          @endif
+          <form action="{{ route('alternatif.update', $alternatif->id) }}" method="POST">
             @csrf
-            {!!(isset($alt))? method_field('PUT') : '' !!}
-            
-            <div class="form-group">
-              <label>Kode Alternatif</label>
-              <input class="form-control @error('kode') is-invalid @enderror" value="{{ isset($alt)? $alt->kode :old('kode') }}" name="kode" type="text" readonly/>
-              @error('kode')
-                <span class="error invalid-feedback">{{ $message }} </span>
-              @enderror
+            @method('PUT')
+            <h3> Identitas Alternatif </h3>
+            <hr>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="nama">Kode</label>
+                  <div class="input-group">
+                    <input id="kode" type="text" class="form-control" name="kode" value="{{ $alternatif->kode }}" required readonly>
+                  </div>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="nama">Nama</label>
+                  <div class="input-group">
+                    <input id="nama" type="text" class="form-control" name="nama" value="{{ $alternatif->nama }}" required>
+                  </div>
+              </div>
             </div>
-
-            <div class="form-group">
-              <label>Nama</label>
-              <input class="form-control @error('nama') is-invalid @enderror" value="{{ isset($alt)? $alt->nama :old('nama') }}" name="nama" type="text"/>
-              @error('nama')
-                <span class="error invalid-feedback">{{ $message }} </span>
-              @enderror
+            <h3> Form Penilaian </h3>
+            <hr>
+            <div class="form-row">
+              @foreach ($kriteriabobot as $key => $k)
+                <div class="form-group col-md-2 mr-4">
+                  <label for="value[{{ $k->id }}]">{{ $k->nama }}</label>
+                    <select class="form-control" id="value[{{ $k->id }}]" name="value[{{ $k->id }}]">
+                      @for ($i = 1; $i <= 5; $i++)
+                        <option value="{{ $i }}" {{ isset($alternatifskor[$key]) && $i == $alternatifskor[$key]->value ? 'selected' : '' }}>{{ $i }}</option>
+                      @endfor
+                    </select>
+                </div>
+              @endforeach
             </div>
-
-
-
-            <div class="form-group">
-              <button class="btn btn-sm btn-primary">Simpan</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+            <a href="{{ route('alternatif.index') }}" class="btn btn-secondary">Kembali</a>
           </form>
         </div>
     </div>

@@ -10,30 +10,33 @@
             <br>
         </div>
         <div class="card-body">
-          <form method="POST" action="{{ $url_form }}">
-            @csrf
-            {!!(isset($alt))? method_field('PUT') : '' !!}
-
-            <div class="form-group">
-              <label>Kode Alternatif</label>
-              <input class="form-control @error('kode') is-invalid @enderror" value="{{ isset($alt)? $alt->kode :old('kode') }}" name="kode" type="text"/>
-              @error('kode')
-                <span class="error invalid-feedback">{{ $message }} </span>
-              @enderror
-            </div>
-
-            <div class="form-group">
-              <label>Nama</label>
-              <input class="form-control @error('nama') is-invalid @enderror" value="{{ isset($alt)? $alt->nama :old('nama') }}" name="nama" type="text"/>
-              @error('nama')
-                <span class="error invalid-feedback">{{ $message }} </span>
-              @enderror
-            </div>
-
-            <div class="form-group">
-              <button class="btn btn-sm btn-primary">Simpan</button>
-            </div>
-          </form>
+          @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Ups!</strong> Ada beberapa masalah dengan masukan Anda.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                            <form action="{{route('alternatif.store')}}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="nama">Kode</label>
+                                    <div class="input-group">
+                                        <input id="kode" type="text" class="form-control" placeholder="Contoh: A01" name="kode" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nama">Nama</label>
+                                    <div class="input-group">
+                                        <input id="nama" type="text" class="form-control" placeholder="Contoh: SV" name="nama" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
+                                <a href="{{ route('alternatif.index') }}" class="btn btn-secondary">Kembali</a>
+                            </form>
         </div>
     </div>
 </section>
