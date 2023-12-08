@@ -40,7 +40,7 @@ class PerhitunganController extends Controller
             $sumBenefit[$a->id] = 0;
             $sumCost[$a->id] = 0;
             foreach ($kriteria as $k) {
-                if ($k->jenis == 0) {
+                if ($k->jenis == 'Benefit') {
                     $sumBenefit[$a->id] += $nmt[$a->id][$k->id];
                 } else {
                     $sumCost[$a->id] += $nmt[$a->id][$k->id];
@@ -63,19 +63,19 @@ class PerhitunganController extends Controller
         // Menghitung nilai dengan rumus v / sum(sumCost)
         $v2 = [];
         foreach ($v as $key => $value) {
-            $v2[$key] = array_sum($sumCost) / $value;
+            $v2[$key] = $sumBenefit[$key] + (array_sum($sumCost) / $value);
         }
 
-        // Menghitung nilai dengan rumus v2 + sumBenefit
-        $v3 = [];
-        foreach ($v2 as $key => $value) {
-            $v3[$key] = $value + $sumBenefit[$key];
-        }
+        // // Menghitung nilai dengan rumus v2 + sumBenefit
+        // $v3 = [];
+        // foreach ($v2 as $key => $value) {
+        //     $v3[$key] = $value + $sumBenefit[$key];
+        // }
 
         // Menghitung nilai utilitas dengan rumus v3 / max(v3) * 100
         $utilitas = [];
-        foreach ($v3 as $key => $value) {
-            $utilitas[$key] = $value / max($v3) * 100/100;
+        foreach ($v2 as $key => $value) {
+            $utilitas[$key] = $value / max($v2) * 100/100;
         }
 
 
@@ -90,7 +90,7 @@ class PerhitunganController extends Controller
             ->with('sumCostInverse', $sumCostInverse)
             ->with('v', $v)
             ->with('v2', $v2)
-            ->with('v3', $v3)
+            // ->with('v3', $v3)
             ->with('utilitas', $utilitas);
 
 
@@ -135,7 +135,7 @@ class PerhitunganController extends Controller
             $sumBenefit[$a->id] = 0;
             $sumCost[$a->id] = 0;
             foreach ($kriteria as $k) {
-                if ($k->jenis == 0) {
+                if ($k->jenis == 'Benefit') {
                     $sumBenefit[$a->id] += $nmt[$a->id][$k->id];
                 } else {
                     $sumCost[$a->id] += $nmt[$a->id][$k->id];
@@ -158,20 +158,22 @@ class PerhitunganController extends Controller
         // Menghitung nilai dengan rumus v / sum(sumCost)
         $v2 = [];
         foreach ($v as $key => $value) {
-            $v2[$key] = array_sum($sumCost) / $value;
+            $v2[$key] = $sumBenefit[$key] + (array_sum($sumCost) / $value);
         }
 
-        // Menghitung nilai dengan rumus v2 + sumBenefit
-        $v3 = [];
-        foreach ($v2 as $key => $value) {
-            $v3[$key] = $value + $sumBenefit[$key];
-        }
+        // // Menghitung nilai dengan rumus v2 + sumBenefit
+        // $v3 = [];
+        // foreach ($v2 as $key => $value) {
+        //     $v3[$key] = $value + $sumBenefit[$key];
+        // }
 
         // Menghitung nilai utilitas dengan rumus v3 / max(v3) * 100
         $utilitas = [];
-        foreach ($v3 as $key => $value) {
-            $utilitas[$key] = $value / max($v3) * 100/100;
+        foreach ($v2 as $key => $value) {
+            $utilitas[$key] = $value / max($v2) * 100/100;
         }
+
+        arsort($utilitas);
 
 
         return view('hasil_akhir.hasil_akhir')
@@ -185,9 +187,7 @@ class PerhitunganController extends Controller
             ->with('sumCostInverse', $sumCostInverse)
             ->with('v', $v)
             ->with('v2', $v2)
-            ->with('v3', $v3)
+            //->with('v3', $v3)
             ->with('utilitas', $utilitas);
-
-
     }
 }
