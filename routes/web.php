@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/kriteria', KriteriaController::class)->parameter('kriteria', 'id');
 
-    Route::resource('/alternatif', AlternatifController::class)->parameter('alternatif', 'id');
+    Route::resource('/alternatif', AlternatifKriteriaController::class)->parameter('alternatif', 'id');
 
     Route::resource('sub_kriteria', SubKriteriaController::class);
 
