@@ -5,6 +5,7 @@ use App\Http\Controllers\AlternatifKriteriaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\SubKriteriaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('alternatif_kriteria', AlternatifKriteriaController::class);
 
+    Route::resource('perhitungan', PerhitunganController::class);
+    Route::post('/reset', [PerhitunganController::class, 'reset']);
+    Route::get('/hasil_akhir', [PerhitunganController::class, 'hasil']);
 
 });
 

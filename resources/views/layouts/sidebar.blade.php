@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('perangkingan') }}" class="nav-link">
+                    <a href="{{ url('hasil_akhir') }}" class="nav-link">
                         <i class="nav-icon fas fa-medal"></i>
                         <p>
                             Hasil Perangkingan
