@@ -11,7 +11,17 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
+    <style type="text/css">
+        .satu {
+        font-size: 12px;
+        }
+        .dua {
+        font-size: 20px;
+        }
+        .tiga {
+        font-size: 8px;
+        }
+     </style>
     <!-- Menampilkan Bobot -->
     <section class="content">
         <div class="card">
@@ -142,10 +152,10 @@
                     <thead>
                         <tr>
                             <th>Alternatif</th>
-                            <th>V 1</th>
-                            <th>V 2</th>
-                            <th>V 3</th>
-                            <th>V 4</th>
+                            <th> 1 / S-i (Atribut Cost) </th>
+                            <th> S-i * Total Atribut Cost</th>
+                            <th> Qi </th>
+                            <th> Ui </th>
                         </tr>
                     </thead>
                     <tbody>

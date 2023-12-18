@@ -30,7 +30,7 @@
                         @foreach($utilitas as $key => $value)
                             <tr>
                                 <td>{{ $alternatif->where('id', $key)->first()->kode }}</td>
-                                <td>{{ number_format($value, 3) }}</td>
+                                <td>{{ number_format($value*100, 3) }}</td>
                                 <td>{{ $loop->iteration }}</td>
                             </tr>
                         @endforeach
